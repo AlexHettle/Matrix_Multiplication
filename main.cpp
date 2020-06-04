@@ -5,6 +5,8 @@
 #include <limits>
 #include <string>
 using matrix = std::vector<std::vector<int>>;
+//Creates a matrix of size nXn with randomly generated
+//numbers from 1-9 inside it
 matrix Matrix_creator(int n){
     std::vector<std::vector<int>> v(n, std::vector<int>(n,0));
     for(auto &line:v){
@@ -14,6 +16,8 @@ matrix Matrix_creator(int n){
     }
     return v;
 }
+//Multiplies two nXn matrices together and returns the
+//resulting matrix
 matrix Matrix_multiplier(matrix v1,matrix v2,int n){
     matrix finished_matrix(n, std::vector<int>(n,0));
     for (int i = 0; i<n; i++){
@@ -24,6 +28,7 @@ matrix Matrix_multiplier(matrix v1,matrix v2,int n){
     }
     return finished_matrix;
 }
+//prints out matrix
 void print_matrix(matrix vec){
     for(auto line:vec){
             std::cout<<"\t";
@@ -34,6 +39,7 @@ void print_matrix(matrix vec){
     }
     std::cout<<"\n";
 }
+//goes through the creation and multiplication of the matrices
 void process(int n){
     srand(time(NULL));
     matrix v1=Matrix_creator(n);
@@ -46,6 +52,7 @@ void process(int n){
     std::cout<<"Matrix #1 X Matrix #2:"<<std::endl;
     print_matrix(final_matrix);
 }
+//takes in the size of the matrix from the user
 void choice(){
     int n;
     std::string runagain;
@@ -56,6 +63,7 @@ void choice(){
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         choice();
     }
+    //asks user if they want to run program again
     else{
         process(n);
         std::cout<<"enter 1 if you want to run this program again\nenter anything else to quit\n";
